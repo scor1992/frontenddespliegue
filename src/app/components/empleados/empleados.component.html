@@ -1,0 +1,39 @@
+<div class="container">
+    <h2>Registrar Empleado</h2>
+    
+    
+    <form #empleadoForm="ngForm" (ngSubmit)="agregarEmpleado(empleadoForm)">
+      <div class="input-field">
+        <label for="name">Nombres:</label>
+        <input type="text" id="name" name="name" ngModel required>
+      </div>
+  
+      <div class="input-field">
+        <label for="lastname">Apellidos:</label>
+        <input type="text" id="lastname" name="lastname" ngModel required>
+      </div>
+  
+      <div class="input-field">
+        <label for="ndocument">Número de Documento:</label>
+        <input type="number" id="ndocument" name="ndocument" ngModel required>
+      </div>
+  
+      <div class="input-field">
+        <label for="biometric">Datos Biométricos:</label>
+        <input type="text" id="biometric" name="biometric" ngModel required>
+      </div>
+  
+      <button type="submit" class="btn">Registrar</button>
+    </form>
+  
+    <!-- Aquí puedes mostrar la lista de empleados si es necesario -->
+    <div *ngIf="empleadoService.empleados.length > 0">
+      <h3>Lista de Empleados</h3>
+      <ul>
+        <li *ngFor="let empleado of empleadoService.empleados">
+          {{ empleado.name }} {{ empleado.lastname }} - Documento: {{ empleado.ndocument }} - Biométrico: {{ empleado.biometric }}
+        </li>
+      </ul>
+    </div>
+  </div>
+  
